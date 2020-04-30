@@ -40,6 +40,7 @@ warnings.filterwarnings('ignore')
 #função para tratar campo de datetime, recebe YY/MM/DD e convert para YYYY-MM-DD
 
 def handleConvertToDate(old):
+
     return datetime.strftime(datetime.strptime(old, '%y/%m/%d'), '%Y-%m-%d')
 	
 #cria a conexão com banco de dados postgreSql
@@ -53,6 +54,7 @@ anomes = 202002
 #leitura de arquivo csv
 
 df = pd.read_csv('arquivo_' + str(anomes) + '.csv',sep=';',encoding='ANSI')
+
 #df.columns
 
 #cabeçalho em letras minusculas, para padronizar o tratamento em colunas
@@ -69,12 +71,12 @@ df['data_ativacao'] = df['data_movimento_old'].apply(handleConvertToDate)
 
 #seleciono as colunas no formato correto para insert into no SQL
 
-df = df[['anomes', 'info_01', 'data_ativacao', 'info_02', 'info_03',
-       'info_04','valor_contratado']]
+df = df[['anomes', 'info_01', 'data_ativacao', 'info_02', 'info_03','info_04','valor_contratado']]
 
 #delete da tabela sql se já exist o anomes do conteudo em questao
 
 delete_string='DELETE FROM tabela where anomes = %s'
+
 engine.execute(delete_string,[anomes]) 
 
 #insere os dados na tabela
@@ -85,6 +87,7 @@ df.to_sql(
     index=False, 
     if_exists='append'
 )
+
 print("dados inseridos, anomes: " + str(anomes))
 
  
@@ -94,6 +97,7 @@ print("dados inseridos, anomes: " + str(anomes))
 #retorno simples para verificar quantos anomes tenho na tabela e quantidade de linhas para cada um deles
 
 res = pd.read_sql_query( "select anomes, count(*) as tt from tabela group by anomes",engine)
+
 res
 
 # FIM
