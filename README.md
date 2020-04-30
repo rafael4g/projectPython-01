@@ -16,7 +16,7 @@ Neste Exemplo:
 
 
 
-
+"""
 # INICIO
 # ======
 
@@ -72,12 +72,13 @@ df.to_sql(
 )
 print("dados inseridos, anomes: " + str(anomes))
 
-""" 
-	Faz uma leitura agrupada por anomes da tabela:
-		Aqui podemos fazer tambem queries complexas para retornar e darmos continuidade em plotagem e graficos.		
-"""
+ 
+#Faz uma leitura agrupada por anomes da tabela:
+#Aqui podemos fazer tambem queries complexas para retornar e darmos continuidade em plotagem e graficos.		
+
 # retorno simples para verificar quantos anomes tenho na tabela e quantidade de linhas para cada um deles
 res = pd.read_sql_query( "select anomes, count(*) as tt from tabela group by anomes",engine)
 res
 
 # FIM
+"""
