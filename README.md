@@ -20,10 +20,10 @@ Neste Exemplo:
 # INICIO
 ======
 
-essential libraries
+#essential libraries
 from datetime import datetime
 
-storing and analysis
+#storing and analysis
 import pandas as pd
 from sqlalchemy import create_engine
 
