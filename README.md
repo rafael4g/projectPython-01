@@ -21,10 +21,13 @@ Neste Exemplo:
 ======
 
 #essential libraries
+
 from datetime import datetime
 
 #storing and analysis
+
 import pandas as pd
+
 from sqlalchemy import create_engine
 
 hide warnings
