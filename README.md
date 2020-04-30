@@ -16,7 +16,7 @@ Neste Exemplo:
 
 
 
-"""
+
 # INICIO
 # ======
 
@@ -81,4 +81,4 @@ res = pd.read_sql_query( "select anomes, count(*) as tt from tabela group by ano
 res
 
 # FIM
-"""
+
